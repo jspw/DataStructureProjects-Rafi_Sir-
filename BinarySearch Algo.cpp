@@ -17,28 +17,34 @@ int  BinarySearch(int a[],int n,int key)
     int i,start=0,enda=n-1,mid;
 
 
-    do
+        do
     {
-        mid=(start + enda )/2 ;
+        mid=(start+enda)/2;
 
-        if(key>a[mid])
-            start = mid+1;
-        else if(key<a[mid])
+        if(a[mid]==key)
+        {
+            printf("%d Find at index no %d",key, mid+1);
+            break;
+        }
+        else if(a[mid]<key)
+        {
+            start = mid + 1;
+        }
+        else
+        {
             enda=mid-1;
-        else if(key == a[mid])
-            return 1;
+        }
     }
-    while(start <= mid);
-
-    if(start > enda)
-        return -1;
+    while(start<=enda);
+        if (start>enda)
+        printf("%d no found ",key);
 
 }
 
 
 int main()
 {
-    int key,i,n,a[1000];
+    int p,key,i,n,a[1000];
     printf("Enter the number of elements of array :");
 
     cin>>n;
@@ -49,11 +55,7 @@ int main()
     cout<<"Enter number you want to search :" ;
     cin>>key;
     cout<<endl;
-    if(BinarySearch(a,n,key))
-        cout<<key<<" Found!"<<endl;
-    else
-        cout<<"Sorry "<<key<<" not found :( "<<endl;
-
+    BinarySearch(a,n,key);
     return 0;
 }
 
